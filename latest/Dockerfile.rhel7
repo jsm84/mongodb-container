@@ -1,4 +1,4 @@
-FROM rhscl/s2i-core-rhel7
+FROM registry.access.redhat.com/ubi7/s2i-base
 
 ENV SUMMARY="MongoDB NoSQL database server" \
     DESCRIPTION="MongoDB (from humongous) is a free and open-source \
@@ -33,7 +33,7 @@ ENV MONGODB_VERSION=3.6 \
 EXPOSE 27017
 
 ENTRYPOINT ["container-entrypoint"]
-CMD ["run-mongod"]
+CMD ["run-mongod-replication"]
 
 RUN yum install -y yum-utils && \
     prepare-yum-repositories rhel-server-rhscl-7-rpms && \
